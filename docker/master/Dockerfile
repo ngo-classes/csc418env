@@ -8,6 +8,7 @@ COPY start-master.sh /
 RUN apt update && \
     apt install -y curl && \
     curl -fsSL https://code-server.dev/install.sh | sh && \
+    mkdir -p /root/.config/code-server/ && \
     cp /config.yaml /root/.config/code-server/config.yaml && \
     rm /config.yaml && \
     apt clean
