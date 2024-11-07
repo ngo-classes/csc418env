@@ -1,4 +1,4 @@
-FROM mongo:8.0.3-nanoserver-ltsc2022
+FROM mongo:8.0.3-noble
 
 COPY mongodb.conf /etc/mongod.conf
 
