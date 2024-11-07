@@ -6,7 +6,8 @@ services:
     volumes:
        - ../csc418lec:/lectures # csc418lec is a github repo (could be private or public) containing lecture materials
        - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
-    depends_on: worker
+    depends_on: 
+      - worker
     
   worker: # back-end MongoDB container
     image: worker:latest
