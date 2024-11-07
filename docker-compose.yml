@@ -22,7 +22,4 @@ services:
 networks:
   default:
     driver: bridge
-    
-volumes: # enable persistence of database data across container restart
-  mongo-data:
-    driver: local
+
