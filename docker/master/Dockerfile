@@ -4,10 +4,6 @@ USER root
 
 COPY start-master.sh /
 
-ENV SPARK_MASTER_PORT=7077
-ENV SPARK_MASTER_WEBUI_PORT=8080
-ENV SPARK_MASTER_LOG=/spark/logs
-
 RUN apt update && \
     apt install -y curl && \
     curl -fsSL https://code-server.dev/install.sh | sh
