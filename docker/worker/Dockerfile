@@ -1,11 +1,5 @@
-FROM rockylinux:9.3-minimal
+FROM mongo:8.0.3-nanoserver-ltsc2022
 
-USER root
+COPY mongodb.conf /etc/mongod.conf
 
-COPY start-worker.sh /
-
-RUN dnf install -y python3 && \
-    dnf clean all && \
-    pip install numpy pandas nltk
-
-CMD ["/bin/bash", "/start-worker.sh"]
+ENTRYPOINT ["mongod", "--config","/etc/mongod.conf"]
