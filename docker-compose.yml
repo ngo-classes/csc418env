@@ -3,6 +3,7 @@ services:
     image: master:latest
     ports:
       - "9000:3000"
+      - "8088:8088"
     volumes:
        - ../csc418lec:/lectures # csc418lec is a github repo (could be private or public) containing lecture materials
        - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
