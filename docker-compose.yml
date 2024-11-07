@@ -9,7 +9,7 @@ services:
     depends_on: worker
     
   worker: # back-end MongoDB container
-    image: mongo:8.0.3-nanoserver-ltsc2022
+    image: worker:latest
     ports:
       - "27017:27017"
     volumes:
