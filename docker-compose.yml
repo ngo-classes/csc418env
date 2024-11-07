@@ -1,34 +1,24 @@
 services:
-  master:
+  master: # user-facing container, with NodeJS and VSCode Server
     image: master:latest
     ports:
-      - "9090:8080"
-      - "7077:7077"
-      - "8888:8888"
-      - "4040:4040"
-      - "5001:5001"
+      - "9000:3000"
     volumes:
-       - ./apps:/spark-apps
-    environment:
-      - "SPARK_LOCAL_IP=spark-master"
-  worker:
-    image: worker:latest
+       - ../csc418lec:/lectures # csc418lec is a github repo (could be private or public) containing lecture materials
+       - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
+    depends_on: worker
+    
+  worker: # back-end MongoDB container
+    image: mongo:8.0.3-nanoserver-ltsc2022
     ports:
-      - "8081"
-    depends_on:
-      - master
-    environment:
-      - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_DRIVER_MEMORY=128m
-      - SPARK_EXECUTOR_MEMORY=256m
+      - "27017:27017"
     volumes:
-       - ./apps:/spark-apps
+       - mongo-data:/data/db
+       
 networks:
   default:
     driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet:  17.18.0.0/16
+    
+volumes: # enable persistence of database data across container restart
+  mongo-data:
+    driver: local
