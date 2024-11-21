@@ -4,14 +4,18 @@ USER root
 
 COPY code-server/config.yaml /
 COPY start-master.sh /
+COPY configs /configs
+COPY node-server /node-server
 
 RUN apt update && \
-    apt install -y curl && \
+    apt install -y curl nginx && \
     curl -fsSL https://code-server.dev/install.sh | sh && \
     mkdir -p /root/.config/code-server/ && \
     cp /config.yaml /root/.config/code-server/config.yaml && \
     rm /config.yaml && \
     apt clean
+
+RUN ln -s /configs/nginx/sites-available/data /etc/nginx/sites-enabled/data
 
 # 8088: vscode-server
 EXPOSE 8088

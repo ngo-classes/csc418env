@@ -1,0 +1,11 @@
+server {
+       listen 3333;
+       listen 9090:3333;
+
+       root /data;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
+}
