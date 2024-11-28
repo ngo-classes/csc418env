@@ -5,6 +5,7 @@ services:
       - "9090:3333"
       - "9000:3000"
       - "8088:8088"
+      - "8000:8000"
     volumes:
       - ./docs:/data # temporary
       - ../courses:/lectures # courses is a github repo containing lecture materials
