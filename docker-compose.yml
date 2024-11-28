@@ -7,7 +7,7 @@ services:
       - "8088:8088"
     volumes:
       - ./docs:/data # temporary
-       # - ../courses:/lectures # courses is a github repo containing lecture materials
+      - ../courses:/lectures # courses is a github repo containing lecture materials
        # - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
     depends_on: 
       - worker
