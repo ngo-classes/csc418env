@@ -25,5 +25,7 @@ RUN ln -s /configs/nginx/sites-available/data /etc/nginx/sites-enabled/data
 EXPOSE 8088
 # 3000: Node.js server
 EXPOSE 3000
+# 8000: mkdocs serve
+EXPOSE 8000
 
 CMD ["/bin/bash", "/start-master.sh"]
