@@ -13,10 +13,11 @@ RUN apt update && \
     curl -fsSL https://code-server.dev/install.sh | sh && \
     mkdir -p /root/.config/code-server/ && \
     cp /config.yaml /root/.config/code-server/config.yaml && \
-    source /setup_mkdocs.sh && \
     rm /config.yaml && \
-    rm /setup_mkdocs.sh  && \
     apt clean
+    
+RUN source /setup_mkdocs.sh && \
+    rm /setup_mkdocs.sh
 
 RUN ln -s /configs/nginx/sites-available/data /etc/nginx/sites-enabled/data
 
