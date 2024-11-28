@@ -16,7 +16,7 @@ RUN apt update && \
     rm /config.yaml && \
     apt clean
     
-RUN source /setup_mkdocs.sh && \
+RUN bash setup_mkdocs.sh && \
     rm /setup_mkdocs.sh
 
 RUN ln -s /configs/nginx/sites-available/data /etc/nginx/sites-enabled/data
