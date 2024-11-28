@@ -1,6 +1,6 @@
 server {
        listen 3333;
-       listen 9090:3333;
+       listen 3000;
 
        root /data;
        index index.html;
