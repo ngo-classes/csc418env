@@ -9,7 +9,7 @@ COPY node-server /node-server
 COPY mkdocs/setup_mkdocs.sh /
 
 RUN apt update && \
-    apt install -y curl nginx && \
+    apt install -y curl nginx python3-full && \
     curl -fsSL https://code-server.dev/install.sh | sh && \
     mkdir -p /root/.config/code-server/ && \
     cp /config.yaml /root/.config/code-server/config.yaml && \
