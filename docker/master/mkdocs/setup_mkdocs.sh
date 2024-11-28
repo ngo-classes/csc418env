@@ -1,3 +1,4 @@
 #!/bin/bash
 
-pip3 install mkdocs
+source /opt/env/mkdocs/bin/activate
+pip install mkdocs-material
