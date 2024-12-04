@@ -21,11 +21,9 @@ RUN bash setup_mkdocs.sh && \
 
 RUN ln -s /configs/nginx/sites-available/data /etc/nginx/sites-enabled/data
 
-# 8088: vscode-server
-EXPOSE 8088
-# 3000: Node.js server
-EXPOSE 3000
+# 8088: vscode-server# 
+# 3000, 4200: Node.js server
 # 8000: mkdocs serve
-EXPOSE 8000
+EXPOSE 8088 8000 3000 42000
 
 CMD ["/bin/bash", "/start-master.sh"]
