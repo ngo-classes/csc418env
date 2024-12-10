@@ -14,7 +14,7 @@ RUN apt update && \
     mkdir -p /root/.config/code-server/ && \
     cp /code-server/config.yaml /root/.config/code-server/config.yaml && \
     mkdir -p /root/.local/share/code-server/User/ && \
-    cp /code-server/settings /root/.local/share/code-server/User/ && \
+    cp /code-server/settings.json /root/.local/share/code-server/User/ && \
     rm -Rf code-server && \
     apt clean
     
