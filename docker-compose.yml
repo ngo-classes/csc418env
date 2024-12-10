@@ -10,7 +10,7 @@ services:
     volumes:
       - ./docs:/data # temporary
       - ../courses:/lectures # courses is a github repo containing lecture materials
-       # - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
+      - ../csc418data:/apps # csc418data is a github repo (could be private or public) containing relevant data and example codes
     depends_on: 
       - worker
     
