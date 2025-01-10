@@ -6,7 +6,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const port = 3000;
+const port = 4200;
 
 // maps file extention to MIME types
 // full list can be found here: https://www.freeformatter.com/mime-types-list.html
