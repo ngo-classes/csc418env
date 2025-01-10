@@ -2,22 +2,20 @@ FROM huy55465/418base
 
 USER root
 
-COPY code-server/config.yaml /
+COPY code-server/ /code-server
 COPY start-master.sh /
 COPY configs /configs
 COPY node-server /node-server
+COPY mkdocs/setup_mkdocs.sh /
 COPY install.sh /
 
-# RUN apt update && \
-#     apt install -y curl nginx && \
-#     curl -fsSL https://code-server.dev/install.sh | sh && \
-#     mkdir -p /root/.config/code-server/ && \
-#     cp /config.yaml /root/.config/code-server/config.yaml && \
-#     rm /config.yaml && \
-#     apt clean
 RUN /install.sh && rm /install.sh
+RUN bash setup_mkdocs.sh && \
+    rm /setup_mkdocs.sh
 
-# 8088: vscode-server
-EXPOSE 8088
+# 8088: vscode-server# 
+# 3000, 4200: Node.js server
+# 8000: mkdocs serve
+EXPOSE 8088 8000 3000 4200
 
 CMD ["/bin/bash", "/start-master.sh"]

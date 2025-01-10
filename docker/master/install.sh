@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get update && apt-get install -y nginx nodejs && apt-get clean
+apt-get update && apt-get install -y nginx nodejs python3-full && apt-get clean
 
 curl -fsSL https://code-server.dev/install.sh | sh &&
     mkdir -p /root/.config/code-server/ &&

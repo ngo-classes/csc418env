@@ -3,12 +3,14 @@ services:
     image: master:latest
     ports:
       - "9090:3333"
-      - "9000:3000"
+      - "3000:3000"
+      - "4200:4200"
       - "8088:8088"
+      - "8000:8000"
     volumes:
       - ./docs:/data # temporary
-       # - ../csc418lec:/lectures # csc418lec is a github repo (could be private or public) containing lecture materials
-       # - ../csc418data:/data # csc418data is a github repo (could be private or public) containing relevant data and example codes
+      - ../courses:/lectures # courses is a github repo containing lecture materials
+      - ../csc418data:/apps # csc418data is a github repo (could be private or public) containing relevant data and example codes
     depends_on: 
       - worker
     
