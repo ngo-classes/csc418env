@@ -1,6 +1,10 @@
 services:
-  master: # user-facing container, with NodeJS and VSCode Server
-    image: master:latest
+  webapp:
+    build:
+      context: ./docker/base
+      tags:
+        - "csc418:latest"
+    image: csc418:latest
     ports:
       - "9090:3333"
       - "3000:3000"
@@ -11,11 +15,13 @@ services:
       - ./docs:/data # temporary
       - ../courses:/lectures # courses is a github repo containing lecture materials
       - ../csc418data:/apps # csc418data is a github repo (could be private or public) containing relevant data and example codes
-    depends_on: 
-      - worker
     
-  worker: # back-end MongoDB container
-    image: worker:latest
+  webdb: # back-end MongoDB container
+    build:
+      context: ./docker/webdb
+      tags:
+        - "csc418db:base"
+    image: csc418db:base
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=goldenrams
