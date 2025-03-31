@@ -3,17 +3,32 @@ A template to support development of containerization learning materials
 
 ## Notes:
 
-### Building the images
-- If you are on a Mac/Linux machine, you only need to run the following to automate the build process
-~~~
-./build.sh
-~~~
+### Warning:
 
-- If you are on a Windows machine, run the following:
+If you clone into a Windows environment, makes sure that your git is set to keep LF:
 
-~~~
-.\build.bat
-~~~
+```bash
+git config --global core.autocrlf false
+git clone https://github.com/class-master/csc466env
+```
+
+### Building the images:
+
+You should build the images in the following order:
+
+```bash
+docker compose build webapp --no-cache
+docker compose build webdb --no-cache
+```
+
+### Launching the cluster:
+
+You should launch in the following order:
+
+```bash
+docker compose up -d webapp
+docker compose up -d webdb
+```
 
 ### Build mkdocs server (for instructor)
 
